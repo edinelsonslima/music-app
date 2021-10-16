@@ -78,37 +78,52 @@
     color: var(--fontGray);
 }
 
-.login-form>input[type='submit'] {
+.login-button {
+    font-size: 1em;
+    color: var(--fontWhite);
+    padding: 10px 15px;
     max-width: 150px;
+    max-height: 40px;
     width: 100%;
-    margin: auto;
     background: var(--transparent);
     cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--fontGray);
 }
 
-.login-form>input[type='submit']:hover {
+.login-button:hover {
     background: linear-gradient(to top, var(--cor01), var(--transparent)99%);
     text-shadow: 2px 2px 50px #000000;
 }
 
-.login-form>input[type='submit']:active {
+.login-button:active {
     box-shadow: inset 0 2px 7px #000000b3;
     text-shadow: 2px 2px 5px #000000d0;
     border-bottom-color: var(--cor01);
 }
 
-.login-links {
+.login-button:nth-child(1) {
+    width: 100px;
+    text-decoration: none;
+    text-align: center;
+    opacity: .8;
+    border-radius: 20px 5px 5px 20px;
+}
+
+.login-links, .login-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
     width: 100%;
+    padding: 0 16px;
 }
 
 .login-create-account {
     color: var(--fontGray);
     text-decoration: none;
-    padding: 0 16px;
 }
 
 .login-create-account:hover {
@@ -145,7 +160,7 @@
     height: 50px;
     cursor: pointer;
     transition: all .7s ease-in-out;
-    opacity: .8;
+    opacity: .9;
 }
 
 .login-icon-social:hover {
@@ -158,6 +173,6 @@
     clip-path: circle(50%);
 }
 
-.login-icon-social:active{
+.login-icon-social:active {
     transform: scale(.7);
 }
