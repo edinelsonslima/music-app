@@ -2,12 +2,15 @@ import facebookImg from '../../assets/facebook.png';
 import googleImg from '../../assets/google.png';
 import githubImg from '../../assets/github.png';
 import { Link } from 'react-router-dom';
-import './index.css';
 import { FormEvent, MouseEventHandler, useMemo, useState } from 'react';
+import './index.css';
+import { Loading } from '../loading';
 
 interface FormLoginProps {
     email: string;
     pass: string;
+    styleError?: object;
+    loadIn?: boolean;
     setEmail: (arg0: string) => void;
     setPass: (arg0: string) => void;
     submit: (arg0: FormEvent<HTMLFormElement>) => void;
@@ -27,7 +30,9 @@ const FromLogin = (props: FormLoginProps) => {
         <section className='login-container'>
             <div className='login-filter-blur'></div>
             <div className='login-content'>
-                <h1 className='login-title'>{props.create? 'Create Account' :'Music App'}</h1>
+                <h1 className='login-title'>
+                    {props.create ? 'Create Account' : 'Music App'}
+                </h1>
                 <form
                     className='login-form'
                     onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -35,6 +40,7 @@ const FromLogin = (props: FormLoginProps) => {
                     }
                 >
                     <input
+                        style={props.styleError}
                         type='email'
                         className='login-email'
                         value={props.email}
@@ -44,6 +50,7 @@ const FromLogin = (props: FormLoginProps) => {
                     />
 
                     <input
+                        style={props.styleError}
                         type='password'
                         className='login-pass'
                         value={props.pass}
@@ -69,10 +76,12 @@ const FromLogin = (props: FormLoginProps) => {
                     <div
                         className='login-buttons'
                         style={
-                            !props.create ? { 
-                                justifyContent: 'center',
-                                marginTop: '20px'
-                            } : {}
+                            !props.create
+                                ? {
+                                      justifyContent: 'center',
+                                      marginTop: '20px',
+                                  }
+                                : {}
                         }
                     >
                         <Link
@@ -82,11 +91,9 @@ const FromLogin = (props: FormLoginProps) => {
                         >
                             Voltar
                         </Link>
-                        <input
-                            type='submit'
-                            className='login-button'
-                            value={props.create ? 'Cadastrar' : 'Entrar'}
-                        />
+                        <button type='submit' className='login-button'>
+                            { props.loadIn? <Loading/> :props.create ? 'Cadastrar' : 'Entrar'}
+                        </button>
                     </div>
                 </form>
                 <span className='login-social-or' style={styleCreate}>

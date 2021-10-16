@@ -21,9 +21,11 @@ code {
     --cor03: #9A8C98;
     --cor04: #C9ADA7;
     --cor05: #F2E9E4;
-    
     --fontBlack: #292929;
     --fontWhite: #e0e0e0;
     --transparent: #ffffff45;
     --fontGray: #c2c2c2;
+    --hue: 223;
+    --bg: hsl(var(--hue), 10%, 90%);
+    --fg: hsl(var(--hue), 10%, 10%);
 }
