@@ -12,7 +12,7 @@ const Login = () => {
         singInGoogle,
         submit,
         styleError,
-        loadIn,
+        loadingSigIn,
         typeError,
     } = useLogin();
 
@@ -26,7 +26,7 @@ const Login = () => {
             singInGithub={singInGithub}
             singInGoogle={singInGoogle}
             submit={submit}
-            loadIn={loadIn}
+            loadingSigIn={loadingSigIn}
             typeError = {typeError}
             styleError={styleError}
         />

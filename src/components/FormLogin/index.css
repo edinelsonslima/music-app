@@ -129,6 +129,11 @@
     text-decoration: underline;
 }
 
+.login-error{
+    text-align: center;
+    color: var(--colorAlert);
+}
+
 .login-social-or {
     position: relative;
     color: var(--fontGray);

@@ -5,7 +5,7 @@ export interface FormLoginProps {
     pass: string;
     styleError?: object;
     typeError?: string;
-    loadIn?: boolean;
+    loadingSigIn?: boolean;
     setEmail: (arg0: string) => void;
     setPass: (arg0: string) => void;
     submit: (arg0: FormEvent<HTMLFormElement>) => void;
@@ -23,12 +23,12 @@ const useFormLogin = (props: FormLoginProps) => {
             setPass,
             submit,
             create,
-            loadIn,
+            loadingSigIn,
             singInFacebook,
             singInGithub,
             singInGoogle,
             styleError,
-            typeError,
+            typeError
         } = props,
         [styleCreate, setStyleCreate] = useState({});
     useMemo(() => {
@@ -43,7 +43,7 @@ const useFormLogin = (props: FormLoginProps) => {
         setPass,
         submit,
         create,
-        loadIn,
+        loadingSigIn,
         singInFacebook,
         singInGithub,
         singInGoogle,

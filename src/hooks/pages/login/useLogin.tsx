@@ -15,7 +15,7 @@ const useLogin = () => {
         [pass, setPass] = useState(''),
         [typeError, setTypeError] = useState(''),
         [styleError, setStyleError] = useState({}),
-        [loadIn, setLoadIn] = useState(false),
+        [loadingSigIn, setLoadingSigIn] = useState(false),
         history = useHistory(),
         googleProvider = new GoogleAuthProvider(),
         facebookProvider = new FacebookAuthProvider(),
@@ -24,8 +24,9 @@ const useLogin = () => {
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         singInEmailPass(auth, email, pass);
-        setLoadIn(true);
+        setLoadingSigIn(true);
         setTypeError('');
+        setStyleError({});
     };
 
     const singInEmailPass = async (auth: any, email: string, pass: string) => {
@@ -33,73 +34,75 @@ const useLogin = () => {
             await signInWithEmailAndPassword(auth, email, pass);
 
             history.push('/home');
-            setLoadIn(false);
+            setLoadingSigIn(false);
         } catch (error: any) {
             errorLogin(error.code);
 
             setStyleError({
-                borderBottomColor: 'red',
+                borderBottomColor: 'var(--colorError)',
             });
-            setLoadIn(false);
+            setLoadingSigIn(false);
         }
     };
 
     const singInGoogle = async () => {
         try {
-            setLoadIn(true);
+            setLoadingSigIn(true);
             setTypeError('');
-
+            setStyleError({});
             const result = await signInWithPopup(auth, googleProvider);
             GoogleAuthProvider.credentialFromResult(result);
 
             history.push('/home');
-            setLoadIn(false);
+            setLoadingSigIn(false);
         } catch (error: any) {
             GoogleAuthProvider.credentialFromError(error);
             errorLogin(error.code);
             setStyleError({
-                borderBottomColor: 'red',
+                borderBottomColor: 'var(--colorError)',
             });
-            setLoadIn(false);
+            setLoadingSigIn(false);
         }
     };
 
     const singInFacebook = async () => {
         try {
-            setLoadIn(true);
+            setLoadingSigIn(true);
             setTypeError('');
+            setStyleError({});
 
             const result = await signInWithPopup(auth, facebookProvider);
             FacebookAuthProvider.credentialFromResult(result);
             history.push('/home');
-            setLoadIn(false);
+            setLoadingSigIn(false);
         } catch (error: any) {
             FacebookAuthProvider.credentialFromError(error);
             errorLogin(error.code);
             setStyleError({
-                borderBottomColor: 'red',
+                borderBottomColor: 'var(--colorError)',
             });
-            setLoadIn(false);
+            setLoadingSigIn(false);
         }
     };
 
     const singInGithub = async () => {
         try {
-            setLoadIn(true);
+            setLoadingSigIn(true);
             setTypeError('');
+            setStyleError({});
 
             const result = await signInWithPopup(auth, githubProvider);
             GithubAuthProvider.credentialFromResult(result);
 
             history.push('/home');
-            setLoadIn(false);
+            setLoadingSigIn(false);
         } catch (error: any) {
             GithubAuthProvider.credentialFromError(error);
             errorLogin(error.code);
             setStyleError({
-                borderBottomColor: 'red',
+                borderBottomColor: 'var(--colorError)',
             });
-            setLoadIn(false);
+            setLoadingSigIn(false);
         }
     };
 
@@ -124,7 +127,7 @@ const useLogin = () => {
         singInGithub,
         singInFacebook,
         styleError,
-        loadIn,
+        loadingSigIn,
         typeError,
     };
 };

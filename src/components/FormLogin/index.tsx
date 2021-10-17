@@ -19,7 +19,7 @@ const FromLogin = (props: FormLoginProps) => {
         styleCreate,
         create,
         email,
-        loadIn,
+        loadingSigIn,
         pass,
         setEmail,
         setPass,
@@ -80,8 +80,10 @@ const FromLogin = (props: FormLoginProps) => {
                         </Link>
                     </div>
 
-                    {typeError&& <span>{typeError}</span>}
-                    
+                    {typeError && (
+                        <small className='login-error'>{typeError}</small>
+                    )}
+
                     <div
                         className='login-buttons'
                         style={
@@ -101,7 +103,7 @@ const FromLogin = (props: FormLoginProps) => {
                             Voltar
                         </Link>
                         <button type='submit' className='login-button'>
-                            {loadIn ? (
+                            {loadingSigIn ? (
                                 <Loading />
                             ) : create ? (
                                 'Cadastrar'
@@ -131,4 +133,5 @@ const FromLogin = (props: FormLoginProps) => {
         </section>
     );
 };
+
 export { FromLogin };

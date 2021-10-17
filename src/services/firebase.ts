@@ -1,7 +1,5 @@
 import * as authentication from 'firebase/app';
-// import * as admin from 'firebase-admin'
 import { getAuth } from '@firebase/auth';
-console.log(process.env.REACT_APP_MESSAGING_SENDER_ID);
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY ,
@@ -18,6 +16,7 @@ const firebaseAuth = authentication.initializeApp(firebaseConfig, 'music-app');
 const auth = getAuth(firebaseAuth);
 export { auth };
 
+// import * as admin from 'firebase-admin'
 // console.log(admin.credential.applicationDefault());
 // admin.initializeApp({
 //     credential: admin.credential.applicationDefault(),
