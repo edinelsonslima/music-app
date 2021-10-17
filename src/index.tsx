@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import dotenv from 'dotenv'
+
 
 import { Router } from './router';
 
 import './index.css';
 
+dotenv.config()
 ReactDOM.render(
     <React.StrictMode>
         <Router />
