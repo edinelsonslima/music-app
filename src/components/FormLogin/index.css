@@ -108,8 +108,7 @@
     width: 100px;
     text-decoration: none;
     text-align: center;
-    opacity: .8;
-    border-radius: 20px 5px 5px 20px;
+    opacity: .9;
 }
 
 .login-links, .login-buttons {

@@ -13,6 +13,7 @@ const Login = () => {
         submit,
         styleError,
         loadIn,
+        typeError,
     } = useLogin();
 
     return (
@@ -25,8 +26,9 @@ const Login = () => {
             singInGithub={singInGithub}
             singInGoogle={singInGoogle}
             submit={submit}
-            styleError={styleError}
             loadIn={loadIn}
+            typeError = {typeError}
+            styleError={styleError}
         />
     );
 };
