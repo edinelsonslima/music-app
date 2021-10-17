@@ -16,6 +16,8 @@ const firebaseAuth = authentication.initializeApp(firebaseConfig, 'music-app');
 const auth = getAuth(firebaseAuth);
 export { auth };
 
+
+
 // import * as admin from 'firebase-admin'
 // console.log(admin.credential.applicationDefault());
 // admin.initializeApp({

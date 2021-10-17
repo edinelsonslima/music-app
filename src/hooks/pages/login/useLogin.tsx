@@ -5,10 +5,10 @@ import {
     FacebookAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
-    AuthErrorCodes,
 } from 'firebase/auth';
 import { auth } from '../../../services/firebase';
 import { useHistory } from 'react-router-dom';
+import { errorLogin } from '../../functions';
 
 const useLogin = () => {
     const [email, setEmail] = useState(''),
@@ -36,8 +36,8 @@ const useLogin = () => {
             history.push('/home');
             setLoadingSigIn(false);
         } catch (error: any) {
-            errorLogin(error.code);
-
+            const err = await errorLogin(error.code);
+            setTypeError(err)
             setStyleError({
                 borderBottomColor: 'var(--colorError)',
             });
@@ -57,7 +57,8 @@ const useLogin = () => {
             setLoadingSigIn(false);
         } catch (error: any) {
             GoogleAuthProvider.credentialFromError(error);
-            errorLogin(error.code);
+            const err = await errorLogin(error.code);
+            setTypeError(err);
             setStyleError({
                 borderBottomColor: 'var(--colorError)',
             });
@@ -77,7 +78,8 @@ const useLogin = () => {
             setLoadingSigIn(false);
         } catch (error: any) {
             FacebookAuthProvider.credentialFromError(error);
-            errorLogin(error.code);
+            const err = await errorLogin(error.code);
+            setTypeError(err);
             setStyleError({
                 borderBottomColor: 'var(--colorError)',
             });
@@ -98,23 +100,13 @@ const useLogin = () => {
             setLoadingSigIn(false);
         } catch (error: any) {
             GithubAuthProvider.credentialFromError(error);
-            errorLogin(error.code);
+            const err = await errorLogin(error.code);
+            setTypeError(err);
             setStyleError({
                 borderBottomColor: 'var(--colorError)',
             });
             setLoadingSigIn(false);
         }
-    };
-
-    const errorLogin = (error: string) => {
-        Object.values(AuthErrorCodes).map((value) => {
-            if (value === error) {
-                const offAuthString = value.replace('auth/', '');
-                const typeError = offAuthString.replaceAll('-', ' ');
-                setTypeError(typeError);
-            }
-            return '';
-        });
     };
 
     return {

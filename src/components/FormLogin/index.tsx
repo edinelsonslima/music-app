@@ -35,6 +35,14 @@ const FromLogin = (props: FormLoginProps) => {
         <section className='login-container'>
             <div className='login-filter-blur'></div>
             <div className='login-content'>
+                <Link
+                    className='login-back'
+                    to='/login'
+                    style={!create ? { display: 'none' } : {}}
+                >
+                    &#8592;
+                </Link>
+
                 <h1 className='login-title'>
                     {create ? 'Create Account' : 'Music App'}
                 </h1>
@@ -84,34 +92,15 @@ const FromLogin = (props: FormLoginProps) => {
                         <small className='login-error'>{typeError}</small>
                     )}
 
-                    <div
-                        className='login-buttons'
-                        style={
-                            !create
-                                ? {
-                                      justifyContent: 'center',
-                                      marginTop: '20px',
-                                  }
-                                : {}
-                        }
-                    >
-                        <Link
-                            className='login-button'
-                            to='/login'
-                            style={!create ? { display: 'none' } : {}}
-                        >
-                            Voltar
-                        </Link>
-                        <button type='submit' className='login-button'>
-                            {loadingSigIn ? (
-                                <Loading />
-                            ) : create ? (
-                                'Cadastrar'
-                            ) : (
-                                'Entrar'
-                            )}
-                        </button>
-                    </div>
+                    <button type='submit' className='login-button'>
+                        {loadingSigIn ? (
+                            <Loading />
+                        ) : create ? (
+                            'Cadastrar'
+                        ) : (
+                            'Entrar'
+                        )}
+                    </button>
                 </form>
 
                 {/* Login with social medias */}

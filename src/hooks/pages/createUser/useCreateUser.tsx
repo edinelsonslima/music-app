@@ -1,34 +1,54 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+    createUserWithEmailAndPassword,
+    Auth,
+    sendEmailVerification,
+} from 'firebase/auth';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { auth } from '../../../services/firebase';
+import { errorLogin } from '../../functions';
 
 const useCreateUser = () => {
     const history = useHistory(),
         [email, setEmail] = useState(''),
         [pass, setPass] = useState(''),
-        [isNext, setIsNext] = useState(false);
+        [isNext, setIsNext] = useState(false),
+        [loadingSigIn, setLoadingSigIn] = useState(false),
+        [typeError, setTypeError] = useState('');
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsNext(true);
+        setLoadingSigIn(true);
+        setTypeError('');
     };
 
     // Buscar o tipo correto da const "auth"
     //Porque está entrando duas vezes na função?
-    const createUser = async (auth: any, email: string, pass: string) => {
+    const createUser = async (auth: Auth, email: string, pass: string) => {
         try {
             await createUserWithEmailAndPassword(auth, email, pass);
+            setLoadingSigIn(false);
             history.push('/login');
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
+            const err = await errorLogin(error?.code);
+            setLoadingSigIn(false);
+            setTypeError(err);
             setIsNext(false);
         }
     };
 
-    if (email && pass && isNext) createUser(auth, email, pass);
+    // const sendEmailVerify = () => {
+    //     let actionCodeSettings = {
+    //         url: 'http://localhost:3000/?email=' + auth.currentUser?.email,
+    //     };
+    //     auth.
+    //     // sendEmailVerification(actionCodeSettings)
+    // };
 
-    return { email, pass, setEmail, setPass, submit };
+    if (isNext) createUser(auth, email, pass);
+
+    return { email, pass, setEmail, setPass, submit, loadingSigIn, typeError };
 };
 
 export { useCreateUser };
