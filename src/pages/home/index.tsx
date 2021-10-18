@@ -1,13 +1,22 @@
+import { Navbar } from '../../components/Navbar';
+import { Playbar } from '../../components/Playbar';
 import { useHome } from '../../hooks/pages/home/useHome';
 
+import './index.css'
+
 const Home = () => {
-    const { signOutAccount, displayName } = useHome();
+    const { signOutAccount } = useHome();
 
     return (
-        <main>
-            <h1>Home page</h1>
-            <h1>{displayName}</h1>
-            <button onClick={signOutAccount}>SingOut</button>
+        <main className="home-container container">
+            <Navbar/>
+
+            <div>
+                <h1>Home page</h1>
+                <button onClick={signOutAccount}>SingOut</button>
+            </div>
+            
+            <Playbar/>
         </main>
     );
 };

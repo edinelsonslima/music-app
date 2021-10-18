@@ -1,0 +1,6 @@
+.playbar-container{
+    background: var(--cor01);
+    color: var(--colorGray);
+    max-height: 6em;
+    height: 100%;
+}

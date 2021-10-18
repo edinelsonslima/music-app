@@ -3,7 +3,7 @@
     background: linear-gradient(to bottom, #00000045, #00000045), url('http://bit.ly/2gPLxZ4');
     background-repeat: no-repeat;
     background-size: cover;
-    color: var(--fontWhite);
+    color: var(--colorWhite);
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -11,7 +11,7 @@
 }
 
 .login-filter-blur {
-    background-color: #ffffff80;
+    background-color: var(--transparent);
     background: inherit;
     filter: blur(5px);
     height: 100%;
@@ -48,7 +48,7 @@
 .login-back {
     font-size: 3em;
     text-decoration: none;
-    color: var(--fontGray);
+    color: var(--colorGray);
     position: absolute;
     top: 5px;
     left: 17px;
@@ -56,7 +56,7 @@
 }
 
 .login-back:hover {
-    color: var(--fontWhite);
+    color: var(--colorWhite);
     text-shadow: 2px 2px 5px black;
 }
 
@@ -77,14 +77,14 @@
     border-radius: 5px;
     font-size: 1em;
     background: transparent;
-    color: var(--fontWhite);
-    border-bottom: 1px solid var(--fontGray);
+    color: var(--colorWhite);
+    border-bottom: 1px solid var(--colorGray);
     width: 100%;
     transition: all .2s ease-in-out;
 }
 
 .login-form>input:focus {
-    border-bottom: 1px solid var(--fontWhite);
+    border-bottom: 1px solid var(--colorWhite);
     background: var(--transparent);
 }
 
@@ -93,12 +93,12 @@
 }
 
 .login-form>input::placeholder {
-    color: var(--fontGray);
+    color: var(--colorGray);
 }
 
 .login-button {
     font-size: 1em;
-    color: var(--fontWhite);
+    color: var(--colorWhite);
     padding: 10px 15px;
     max-width: 150px;
     max-height: 40px;
@@ -108,7 +108,7 @@
     outline: none;
     border: none;
     border-radius: 5px;
-    border-bottom: 1px solid var(--fontGray);
+    border-bottom: 1px solid var(--colorGray);
 }
 
 .login-button:hover {
@@ -139,7 +139,7 @@
 }
 
 .login-create-account {
-    color: var(--fontGray);
+    color: var(--colorGray);
     text-decoration: none;
 }
 
@@ -154,7 +154,7 @@
 
 .login-social-or {
     position: relative;
-    color: var(--fontGray);
+    color: var(--colorGray);
 }
 
 .login-social-or::after, .login-social-or::before {
@@ -164,7 +164,7 @@
     left: 20px;
     width: 50px;
     height: 0.01em;
-    background: var(--fontGray);
+    background: var(--colorGray);
 }
 
 .login-social-or::before {

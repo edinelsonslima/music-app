@@ -1,7 +1,7 @@
 import {
     createUserWithEmailAndPassword,
     Auth,
-    sendEmailVerification,
+    // sendEmailVerification,
 } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';

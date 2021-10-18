@@ -18,7 +18,7 @@ const Router = () => {
                 />
 
                 <CustomRouter 
-                    isPrivate 
+                    // isPrivate 
                     path={'/home'} 
                     component={Home} exact />
 
