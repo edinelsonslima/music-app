@@ -2,6 +2,7 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../services/firebase';
 import { useState } from 'react';
+
 interface CustomRouterProps extends RouteProps {
     isPrivate?: boolean;
 }

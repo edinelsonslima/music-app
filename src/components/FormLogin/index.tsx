@@ -8,9 +8,7 @@ import { Link } from 'react-router-dom';
 import { Loading } from '../loading';
 
 //Assets
-import facebookImg from '../../assets/facebook.png';
-import googleImg from '../../assets/google.png';
-import githubImg from '../../assets/github.png';
+import { FaFacebook, FaGithub, FcGoogle } from '../../assets/icons/index';
 
 import './index.css';
 
@@ -109,13 +107,13 @@ const FromLogin = (props: FormLoginProps) => {
                 </span>
                 <div className='login-social' style={styleCreate}>
                     <div className='login-icon-social' onClick={singInGoogle}>
-                        <img src={googleImg} alt='google icon' />
+                        <FcGoogle className='login-icon' />
                     </div>
                     <div className='login-icon-social' onClick={singInFacebook}>
-                        <img src={facebookImg} alt='facebook icon' />
+                        <FaFacebook className='login-icon icon-facebook' />
                     </div>
                     <div className='login-icon-social' onClick={singInGithub}>
-                        <img src={githubImg} alt='github icon' />
+                        <FaGithub className='login-icon' />
                     </div>
                 </div>
             </div>

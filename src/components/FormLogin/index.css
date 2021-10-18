@@ -189,10 +189,13 @@
     transform: rotate(360deg);
 }
 
-.login-icon-social>img {
+.login-icon {
     width: 100%;
     height: 100%;
-    clip-path: circle(50%);
+}
+
+.icon-facebook {
+    fill: #3b6edd;
 }
 
 .login-icon-social:active {
