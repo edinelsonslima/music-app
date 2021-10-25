@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch } from 'react-router-dom';
+import { StopProvider } from '../hooks/context/useStop';
 
 import { Login } from '../pages/login';
 import { CreateUser } from '../pages/createUser';
@@ -8,22 +9,26 @@ import { Home } from '../pages/home';
 const Router = () => {
     return (
         <BrowserRouter>
-            <Switch>
-                <CustomRouter path={'/login'} component={Login} />
+            <StopProvider>
+                <Switch>
+                    <CustomRouter path={'/login'} component={Login} />
 
-                <CustomRouter
-                    path={'/create-user'}
-                    component={CreateUser}
-                    exact
-                />
+                    <CustomRouter
+                        path={'/create-user'}
+                        component={CreateUser}
+                        exact
+                    />
 
-                <CustomRouter 
-                    // isPrivate 
-                    path={'/home'} 
-                    component={Home} exact />
+                    <CustomRouter
+                        // isPrivate
+                        path={'/home'}
+                        component={Home}
+                        exact
+                    />
 
-                <CustomRouter path={'*'} component={Login} />
-            </Switch>
+                    <CustomRouter path={'*'} component={Login} />
+                </Switch>
+            </StopProvider>
         </BrowserRouter>
     );
 };

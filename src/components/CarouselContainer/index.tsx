@@ -29,14 +29,14 @@ const CarouselContainer = () => {
 
     if (e) e.scrollTo(0, upDownElement);
 
-    useEffect(() => {
+    useMemo(() => {
         setCards(seedMusicFake);
     }, [seedMusicFake]);
 
     return (
         <div className='carousel-extend'>
             <button onClick={up}>
-                <AiOutlineUp/>
+                <AiOutlineUp />
             </button>
             <div className='carrossel-container'>
                 {cards.map((value, index) => (

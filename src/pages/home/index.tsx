@@ -1,4 +1,5 @@
 import { CarouselContainer } from '../../components/CarouselContainer';
+import { Animation } from '../../components/Animation';
 import { Navbar } from '../../components/Navbar';
 import { Playbar } from '../../components/Playbar';
 
@@ -9,7 +10,7 @@ const Home = () => {
         <div className='home-container'>
             <Navbar />
             <main className='home-main container'>
-                <div style={{flex: '1', color: '#fff'}}>a</div>
+                <Animation/>
                 <CarouselContainer />
             </main>
             <Playbar />
