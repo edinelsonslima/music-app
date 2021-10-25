@@ -1,37 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
-import { CardMusic, CardMusicProps } from '../CardMusic';
-import { seedMusicFake } from './seedMusicFake';
+import { CardMusic } from '../CardMusic';
 import { AiOutlineDown, AiOutlineUp } from '../../assets/icons';
 import './index.css';
+import { useCarouselContainer } from '../../hooks/components/CarouselContainer/useCarouselContainer';
 
 const CarouselContainer = () => {
-    const [upDownElement, setUpDownElement] = useState(0),
-        [cards, setCards] = useState<CardMusicProps[]>([]),
-        e = document.querySelector('.carrossel-container');
-
-    function up() {
-        if (e) {
-            if (upDownElement <= 0) return;
-            const newValue =
-                upDownElement - e.scrollHeight / seedMusicFake.length;
-            setUpDownElement(newValue);
-        }
-    }
-
-    function down() {
-        if (e) {
-            if (upDownElement >= e.scrollHeight - e.scrollHeight / 5) return;
-            const newValue =
-                upDownElement + e.scrollHeight / seedMusicFake.length;
-            setUpDownElement(newValue);
-        }
-    }
-
-    if (e) e.scrollTo(0, upDownElement);
-
-    useMemo(() => {
-        setCards(seedMusicFake);
-    }, [seedMusicFake]);
+    const { cards, down, up } = useCarouselContainer();
 
     return (
         <div className='carousel-extend'>
