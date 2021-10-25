@@ -1,0 +1,29 @@
+.carousel-extend{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+} 
+
+.card-container {
+    display: flex;
+    max-height: 110px;
+    width: 100%;
+    gap: 20px;
+    padding: 5px;
+    color: var(--colorGray);
+    background: var(--transparent);
+    border-radius: 5px;
+}
+
+.card-container>img {
+    width: 100px;
+    height: 100px;
+}
+
+.card-container>div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.281);
+}

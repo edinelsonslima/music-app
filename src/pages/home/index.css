@@ -3,5 +3,12 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    
+}
+
+.home-main {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+    width: 100%;
 }
