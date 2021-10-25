@@ -1,9 +1,14 @@
+import { signOut } from 'firebase/auth';
 import { useMemo, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { auth } from '../../../services/firebase';
 
 const useNavbar = () => {
-    const [srcIcon, setSrcIcon] = useState('');
-    const [displayName, setDisplayName] = useState('');
+    const history = useHistory(),
+        [srcIcon, setSrcIcon] = useState(''),
+        [displayName, setDisplayName] = useState(''),
+        [styleOptionsProfile, setStyleOptionsProfile] = useState({transform: 'scale(0)'}),
+        [styleAux, setStyleAux] = useState(true);
 
     useMemo(() => {
         if (auth.currentUser) {
@@ -20,7 +25,28 @@ const useNavbar = () => {
         }
     }, [srcIcon]);
 
-    return { srcIcon, displayName };
+    const signOutAccount = () => {
+        signOut(auth);
+        history.push('/login');
+    };
+
+    const styleProfile = () => {
+        if (styleAux) {
+            setStyleOptionsProfile({ transform: 'scale(1)' });
+            setStyleAux(false);
+            return;
+        }
+        setStyleOptionsProfile({ transform: 'scale(0)' });
+        setStyleAux(true);
+    };
+
+    return {
+        srcIcon,
+        displayName,
+        signOutAccount,
+        styleOptionsProfile,
+        styleProfile,
+    };
 };
 
 export { useNavbar };

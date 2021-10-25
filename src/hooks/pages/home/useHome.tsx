@@ -13,12 +13,7 @@ const useHome = () => {
             setDisplayName(username);
         }
     }, [displayName]);
-
-    const signOutAccount = () => {
-        signOut(auth);
-        history.push('/login')
-    };
-    return { signOutAccount, displayName };
+    return {  displayName };
 };
 
 export { useHome };
