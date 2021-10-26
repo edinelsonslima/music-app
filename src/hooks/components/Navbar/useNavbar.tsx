@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import { useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { auth } from '../../../services/firebase';
+import { Authentication } from '../../../services/firebase';
 
 const useNavbar = () => {
     const history = useHistory(),
@@ -11,14 +11,14 @@ const useNavbar = () => {
         [styleAux, setStyleAux] = useState(true);
 
     useMemo(() => {
-        if (auth.currentUser) {
+        if (Authentication.currentUser) {
             const name0: string =
-                (auth.currentUser.displayName &&
-                    auth.currentUser.displayName[0]) ||
+                (Authentication.currentUser.displayName &&
+                    Authentication.currentUser.displayName[0]) ||
                 '';
-            const urlPhoto: string = auth.currentUser.photoURL || '';
+            const urlPhoto: string = Authentication.currentUser.photoURL || '';
 
-            setDisplayName(auth.currentUser.displayName || '');
+            setDisplayName(Authentication.currentUser.displayName || '');
 
             if (urlPhoto) return setSrcIcon(urlPhoto);
             setSrcIcon(name0);
@@ -26,7 +26,7 @@ const useNavbar = () => {
     }, [srcIcon]);
 
     const signOutAccount = () => {
-        signOut(auth);
+        signOut(Authentication);
         history.push('/login');
     };
 

@@ -5,7 +5,7 @@ import {
 } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { auth } from '../../../services/firebase';
+import { Authentication } from '../../../services/firebase';
 import { errorLogin } from '../../functions';
 
 const useCreateUser = () => {
@@ -23,11 +23,11 @@ const useCreateUser = () => {
         setTypeError('');
     };
 
-    // Buscar o tipo correto da const "auth"
+    // Buscar o tipo correto da const "Authentication"
     //Porque está entrando duas vezes na função?
-    const createUser = async (auth: Auth, email: string, pass: string) => {
+    const createUser = async (Authentication: Auth, email: string, pass: string) => {
         try {
-            await createUserWithEmailAndPassword(auth, email, pass);
+            await createUserWithEmailAndPassword(Authentication, email, pass);
             setLoadingSigIn(false);
             history.push('/login');
         } catch (error: any) {
@@ -40,13 +40,13 @@ const useCreateUser = () => {
 
     // const sendEmailVerify = () => {
     //     let actionCodeSettings = {
-    //         url: 'http://localhost:3000/?email=' + auth.currentUser?.email,
+    //         url: 'http://localhost:3000/?email=' + Authentication.currentUser?.email,
     //     };
-    //     auth.
+    //     Authentication.
     //     // sendEmailVerification(actionCodeSettings)
     // };
 
-    if (isNext) createUser(auth, email, pass);
+    if (isNext) createUser(Authentication, email, pass);
 
     return { email, pass, setEmail, setPass, submit, loadingSigIn, typeError };
 };

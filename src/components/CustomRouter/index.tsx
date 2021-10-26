@@ -1,6 +1,6 @@
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../services/firebase';
+import { Authentication } from '../../services/firebase';
 import { useState } from 'react';
 
 interface CustomRouterProps extends RouteProps {
@@ -10,7 +10,7 @@ interface CustomRouterProps extends RouteProps {
 const CustomRouter = (props: CustomRouterProps) => {
     const [isAuth, setIsAuth] = useState('');
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(Authentication, (user) => {
         if (!user) return;
         setIsAuth(user.uid);
     });

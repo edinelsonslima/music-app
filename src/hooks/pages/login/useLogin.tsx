@@ -6,7 +6,7 @@ import {
     GithubAuthProvider,
     signInWithPopup,
 } from 'firebase/auth';
-import { auth } from '../../../services/firebase';
+import { Authentication } from '../../../services/firebase';
 import { useHistory } from 'react-router-dom';
 import { errorLogin } from '../../functions';
 
@@ -23,15 +23,15 @@ const useLogin = () => {
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        singInEmailPass(auth, email, pass);
+        singInEmailPass(Authentication, email, pass);
         setLoadingSigIn(true);
         setTypeError('');
         setStyleError({});
     };
 
-    const singInEmailPass = async (auth: any, email: string, pass: string) => {
+    const singInEmailPass = async (Authentication: any, email: string, pass: string) => {
         try {
-            await signInWithEmailAndPassword(auth, email, pass);
+            await signInWithEmailAndPassword(Authentication, email, pass);
 
             history.push('/home');
             setLoadingSigIn(false);
@@ -50,7 +50,7 @@ const useLogin = () => {
             setLoadingSigIn(true);
             setTypeError('');
             setStyleError({});
-            const result = await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(Authentication, googleProvider);
             GoogleAuthProvider.credentialFromResult(result);
 
             history.push('/home');
@@ -72,7 +72,7 @@ const useLogin = () => {
             setTypeError('');
             setStyleError({});
 
-            const result = await signInWithPopup(auth, facebookProvider);
+            const result = await signInWithPopup(Authentication, facebookProvider);
             FacebookAuthProvider.credentialFromResult(result);
             history.push('/home');
             setLoadingSigIn(false);
@@ -93,7 +93,7 @@ const useLogin = () => {
             setTypeError('');
             setStyleError({});
 
-            const result = await signInWithPopup(auth, githubProvider);
+            const result = await signInWithPopup(Authentication, githubProvider);
             GithubAuthProvider.credentialFromResult(result);
 
             history.push('/home');
