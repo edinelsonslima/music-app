@@ -1,35 +1,36 @@
-import { useMemo, useState } from 'react';
-import { CardMusicProps } from '../../../components/CardMusic';
-import { seedMusicFake } from './seedMusicFake';
+import { useEffect, useState } from 'react';
+import { getDoc, getDocResponse } from '../../../data/firestore';
 
 const useCarouselContainer = () => {
     const [upDownElement, setUpDownElement] = useState(0),
-        [cards, setCards] = useState<CardMusicProps[]>([]),
+        [cards, setCards] = useState<getDocResponse[]>([]),
         e = document.querySelector('.carrossel-container');
 
     function up() {
         if (e) {
             if (upDownElement <= 0) return;
-            const newValue =
-                upDownElement - e.scrollHeight / seedMusicFake.length;
+            const newValue = upDownElement - e.scrollHeight / cards.length;
             setUpDownElement(newValue);
         }
     }
 
     function down() {
         if (e) {
-            if (upDownElement >= e.scrollHeight - e.scrollHeight / 5) return;
-            const newValue =
-                upDownElement + e.scrollHeight / seedMusicFake.length;
+            if (upDownElement >= e.scrollHeight - e.scrollHeight / cards.length)
+                return;
+            const newValue = upDownElement + e.scrollHeight / cards.length;
             setUpDownElement(newValue);
         }
     }
 
     if (e) e.scrollTo(0, upDownElement);
 
-    useMemo(() => {
-        setCards(seedMusicFake);
-    }, [seedMusicFake]);
+    useEffect(() => {
+        (async () => {
+            const musics = await getDoc();
+            setCards(musics);
+        })();
+    }, []);
 
     return { cards, down, up };
 };

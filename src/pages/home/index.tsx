@@ -2,7 +2,6 @@ import { CarouselContainer } from '../../components/CarouselContainer';
 import { Animation } from '../../components/Animation';
 import { Navbar } from '../../components/Navbar';
 import { Playbar } from '../../components/Playbar';
-
 import './index.css';
 
 const Home = () => {
@@ -10,7 +9,7 @@ const Home = () => {
         <div className='home-container'>
             <Navbar />
             <main className='home-main container'>
-                <Animation/>
+                <Animation />
                 <CarouselContainer />
             </main>
             <Playbar />

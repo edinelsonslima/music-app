@@ -1,18 +1,15 @@
+import { getDocResponse } from '../../data/firestore';
 import './index.css';
 
-export type CardMusicProps = {
-    photoMusic: string;
-    nameMusic: string;
-    descriptionMusic: string;
-};
+const CardMusic = (props: getDocResponse) => {
+    const { description, photoUrl, title } = props;
 
-const CardMusic = (props: CardMusicProps) => {
     return (
         <div className='card-container'>
-            <img src={props.photoMusic} alt='capa' />
+            <img src={photoUrl} alt='capa' />
             <div>
-                <p>{props.nameMusic}</p>
-                <p>{props.descriptionMusic}</p>
+                <p>{title}</p>
+                <p>{description}</p>
             </div>
         </div>
     );

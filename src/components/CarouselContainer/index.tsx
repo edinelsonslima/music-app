@@ -15,9 +15,10 @@ const CarouselContainer = () => {
                 {cards.map((value, index) => (
                     <CardMusic
                         key={index}
-                        descriptionMusic={value.descriptionMusic}
-                        nameMusic={value.nameMusic}
-                        photoMusic={value.photoMusic}
+                        description={value.description}
+                        musicUrl={value.title}
+                        photoUrl={value.photoUrl}
+                        title={value.title}
                     />
                 ))}
             </div>

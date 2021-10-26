@@ -13,6 +13,6 @@ const firebaseConfig = {
 
 const firebaseAuth = initializeApp(firebaseConfig, 'music-app'),
     Authentication = getAuth(firebaseAuth),
-    FireStore = getFirestore(firebaseAuth);
+    FireStore = getFirestore(firebaseAuth)
 
 export { Authentication, FireStore };

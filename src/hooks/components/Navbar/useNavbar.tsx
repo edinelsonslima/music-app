@@ -23,7 +23,7 @@ const useNavbar = () => {
             if (urlPhoto) return setSrcIcon(urlPhoto);
             setSrcIcon(name0);
         }
-    }, [srcIcon]);
+    }, []);
 
     const signOutAccount = () => {
         signOut(Authentication);
