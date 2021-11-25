@@ -1,21 +1,11 @@
-import { BrowserRouter, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import { StopProvider } from "../hooks/context/useStop";
 
 import { Login } from "../pages/login";
 import { CreateUser } from "../pages/createUser";
 import { CustomRouter } from "../components/CustomRouter";
 import { Home } from "../pages/home";
-import { useEffect } from "react";
-import { setCurrentScreen, Analytics } from "../services/firebase";
-
-const RouterListener = () => {
-  const location = useLocation();
-  useEffect(() => {
-    setCurrentScreen(Analytics, location.pathname);
-  }, [location]);
-
-  return <></>;
-};
+import { RouterListener } from "../services/firebase/analytics";
 
 const Router = () => {
   return (
