@@ -11,6 +11,7 @@ import { Loading } from '../loading';
 import { FaFacebook, FaGithub, FcGoogle } from '../../assets/icons/index';
 
 import './index.css';
+import { analyticsEvent } from "../../services/firebase/analytics";
 
 const FromLogin = (props: FormLoginProps) => {
     const {
@@ -90,7 +91,7 @@ const FromLogin = (props: FormLoginProps) => {
                         <small className='login-error'>{typeError}</small>
                     )}
 
-                    <button type='submit' className='login-button'>
+                    <button type='submit' className='login-button' onClick={() => analyticsEvent("click_cta_login")}>
                         {loadingSigIn ? (
                             <Loading />
                         ) : create ? (

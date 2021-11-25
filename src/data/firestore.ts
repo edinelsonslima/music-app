@@ -30,7 +30,6 @@ const getDoc = async () => {
     querySnapshot.forEach((doc) => {
         data.push(doc.data() as getDocResponse);
     });
-
     return data;
 };
 
